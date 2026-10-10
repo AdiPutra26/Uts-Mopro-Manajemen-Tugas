@@ -1,0 +1,27 @@
+{
+  "name": "backend-task-management",
+  "version": "1.0.0",
+  "description": "RESTful API Backend Aplikasi Manajemen Tugas dengan Express.js dan arsitektur MVC",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "rest-api",
+    "mvc",
+    "task-management",
+    "crud"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

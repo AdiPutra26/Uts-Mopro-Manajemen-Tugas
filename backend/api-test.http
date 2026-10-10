@@ -1,0 +1,72 @@
+### REST Client Test File (Aplikasi Manajemen Tugas)
+### Base URL: http://localhost:5000
+
+@baseUrl = http://localhost:5000
+
+### 1. Health Check / Info API
+GET {{baseUrl}}/
+Accept: application/json
+
+### 2. Mengambil Semua Tugas (Get All Tasks)
+GET {{baseUrl}}/api/tasks
+Accept: application/json
+
+### 3. Filter Tugas Berdasarkan Recurrence / Jadwal ('daily', 'weekly', 'monthly', 'none')
+GET {{baseUrl}}/api/tasks?recurrence=daily
+Accept: application/json
+
+### 4. Filter Tugas Berdasarkan Status ('completed', 'in-progress', 'pending')
+GET {{baseUrl}}/api/tasks?status=in-progress
+Accept: application/json
+
+### 5. Filter Tugas Berdasarkan Priority ('high', 'medium', 'low')
+GET {{baseUrl}}/api/tasks?priority=high
+Accept: application/json
+
+### 6. Pencarian Tugas Berdasarkan Kata Kunci (search)
+GET {{baseUrl}}/api/tasks?search=Peliharaan
+Accept: application/json
+
+### 7. Mengambil Detail Tugas Berdasarkan ID (Get Task by ID)
+GET {{baseUrl}}/api/tasks/1
+Accept: application/json
+
+### 8. Menambahkan Tugas Berjadwal Baru (Create Task dengan Recurrence)
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Memberi Makan Kucing Peliharaan",
+  "description": "Memberikan whiskas basah dan air minum bersih setiap pagi",
+  "status": "pending",
+  "priority": "high",
+  "recurrence": "daily",
+  "dueDate": "2026-10-12"
+}
+
+### 9. Memperbarui Tugas & Mengubah Jadwal (Update Task by ID)
+PUT {{baseUrl}}/api/tasks/1
+Content-Type: application/json
+
+{
+  "status": "completed",
+  "priority": "medium",
+  "recurrence": "weekly"
+}
+
+### 10. Menghapus Tugas (Delete Task by ID)
+DELETE {{baseUrl}}/api/tasks/3
+Accept: application/json
+
+### 11. Menguji Error Handling: Tugas Tidak Ditemukan (404)
+GET {{baseUrl}}/api/tasks/999
+Accept: application/json
+
+### 12. Menguji Validasi: Recurrence Tidak Valid (400 Bad Request)
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Tugas Jadwal Salah",
+  "recurrence": "hourly"
+}
